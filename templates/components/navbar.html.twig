@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            {% if app.user %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/cars/new">Nouvelle annonce</a>
+                </li>
+            {% endif %}
+        </ul>
+        {% if app.user %}
+            <a class="btn btn-outline-secondary" href="{{ path('app_logout') }}">Déconnexion</a>
+        {% else %}
+            <a class="btn btn-outline-secondary" href="{{ path('app_login') }}">Connexion</a>
+            <a class="btn btn-outline-secondary" href="{{ path('app_register') }}">S'enregistrer</a>
+        {% endif %}
+    </div>
+</nav>

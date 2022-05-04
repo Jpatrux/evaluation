@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur LaBonneVoiture{% endblock %}
+
+{% block body %}
+    <div class="container">
+                <h1>LaBonneVoiture</h1>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Recherche par marques
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                {% for car in cars %}
+                <li><a class="dropdown-item" href="{{ path('app_single', {'id': car.id}) }}">{{ car.brand }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="row">
+            {% for car in cars %}
+            <div class="card" style="width: 18rem;">
+                {% if car.picture %}
+                <img src="{{ asset(car.picture) }}" class="card-img-top" alt="">
+                    {% else %}
+                        <img src="{{ asset('img/no_image.png') }}" class="card-img-top" alt="">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ car.title }}</h5>
+                    <p class="card-text">{{ car.description }}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ car.brand }} {{ car.model }}</li>
+                    <li class="list-group-item">{{ car.kilometers }} km</li>
+                    <li class="list-group-item">{{ car.price }} €</li>
+                </ul>
+                <div class="card-body">
+                    <a class="btn btn-primary" href="{{ path('app_cars_show', {'id': car.id}) }}">Consulter la fiche</a>
+                    {% if app.user %}
+                        <a type="button" class="btn btn-success">Favoris</a>
+                        <a href="{{ path('app_cars_edit', {'id': car.id}) }}"><img src="{{ asset('img/edit.png') }}" alt="modifier" ></a>
+                        <a href="{{ path('app_cars_delete', {'id': car.id}) }}"><img src="{{ asset('img/delete.png') }}" alt="supprimer" ></a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}

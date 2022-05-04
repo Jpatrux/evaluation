@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Cars{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Nouvelle annonce</h1>
+
+        {{ include('cars/_form.html.twig') }}
+
+        <a href="{{ path('app_cars_index') }}">back to list</a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{# templates/bundles/TwigBundle/Exception/error403.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Erreur 403 - Page inconnue</h1>
+        <img src="{{ asset('img/error403.webp') }}" alt="erreur 403">
+        <p>
+            La page demandée est introuvable. <a href="/">retour à l'index</a>.
+        </p>
+    </div>
+
+{% endblock %}

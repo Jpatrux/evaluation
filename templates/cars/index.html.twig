@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cars index{% endblock %}
+
+{% block body %}
+    <h1>Cars index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Modèle</th>
+                <th>Marque</th>
+                <th>Prix</th>
+                <th>Date de 1ère circulation</th>
+                <th>Kilomètres</th>
+                <th>Carburant</th>
+                <th>Permis de conduire</th>
+                <th>Photo</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for car in cars %}
+            <tr>
+                <td>{{ car.title }}</td>
+                <td>{{ car.description }}</td>
+                <td>{{ car.model }}</td>
+                <td>{{ car.brand }}</td>
+                <td>{{ car.price }}</td>
+                <td>{{ car.releaseDate ? car.releaseDate|date('Y-m-d') : '' }}</td>
+                <td>{{ car.kilometers }}</td>
+                <td>{{ car.fuel }}</td>
+                <td>{{ car.license ? 'Oui' : 'Non' }}</td>
+                <td>
+                    <a href="{{ path('app_cars_show', {'id': car.id}) }}">Fiche</a>
+                    <a href="{{ path('app_cars_edit', {'id': car.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cars_new') }}">Nouvelle annonce</a>
+{% endblock %}

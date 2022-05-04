@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cars{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>{{ car.title }}</h1>
+        <img src="{{ asset('img/'~car.picture~'.jpg') }}" class="img-fluid" alt="">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>Titre</th>
+                <td>{{ car.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ car.description }}</td>
+            </tr>
+            <tr>
+                <th>Modèle</th>
+                <td>{{ car.model }}</td>
+            </tr>
+            <tr>
+                <th>Marque</th>
+                <td>{{ car.brand }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ car.price }} €</td>
+            </tr>
+            <tr>
+                <th>Date de première circulation</th>
+                <td>{{ car.releaseDate ? car.releaseDate|date('d-m-Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Kilomètres</th>
+                <td>{{ car.kilometers }}</td>
+            </tr>
+            <tr>
+                <th>Type de carburant</th>
+                <td>{{ car.fuel }}</td>
+            </tr>
+            <tr>
+                <th>Permis de conduire</th>
+                <td>{{ car.license ? 'Yes' : 'No' }}</td>
+            </tr>
+
+            </tbody>
+        </table>
+
+        <a href="/">Retour aux annonces</a>
+
+        {% if app.user %}
+
+            <a href="{{ path('app_cars_edit', {'id': car.id}) }}">Modifier</a>
+
+            {{ include('cars/_delete_form.html.twig') }}
+        {% endif %}
+    </div>
+
+{% endblock %}
