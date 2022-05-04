@@ -24,7 +24,8 @@ class CarsController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_ADMIN", "ROLE_USER")
+     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_USER")
      */
     #[Route('/new', name: 'app_cars_new', methods: ['GET', 'POST'])]
     public function new(Request $request, CarsRepository $carsRepository): Response
@@ -59,7 +60,8 @@ class CarsController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_ADMIN", "ROLE_USER")
+     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_USER")
      */
     #[Route('/{id}/edit', name: 'app_cars_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Cars $car, CarsRepository $carsRepository): Response
@@ -79,7 +81,8 @@ class CarsController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_ADMIN", "ROLE_USER")
+     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_USER")
      */
     #[Route('/{id}', name: 'app_cars_delete', methods: ['POST'])]
     public function delete(Request $request, Cars $car, CarsRepository $carsRepository): Response

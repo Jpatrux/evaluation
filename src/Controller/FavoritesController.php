@@ -15,7 +15,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class FavoritesController extends AbstractController
 {
     /**
-     * @IsGranted("ROLE_ADMIN", "ROLE_USER")
+     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_USER")
      */
     #[Route('/', name: 'app_favorites_index', methods: ['GET'])]
     public function index(FavoritesRepository $favoritesRepository): Response
@@ -26,7 +27,8 @@ class FavoritesController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_ADMIN", "ROLE_USER")
+     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_USER")
      */
     #[Route('/new', name: 'app_favorites_new', methods: ['GET', 'POST'])]
     public function new(Request $request, FavoritesRepository $favoritesRepository): Response
@@ -47,7 +49,8 @@ class FavoritesController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_ADMIN", "ROLE_USER")
+     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_USER")
      */
     #[Route('/{id}', name: 'app_favorites_show', methods: ['GET'])]
     public function show(Favorites $favorite): Response
@@ -58,7 +61,8 @@ class FavoritesController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_ADMIN", "ROLE_USER")
+     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_USER")
      */
     #[Route('/{id}/edit', name: 'app_favorites_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Favorites $favorite, FavoritesRepository $favoritesRepository): Response
@@ -78,7 +82,8 @@ class FavoritesController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_ADMIN", "ROLE_USER")
+     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_USER")
      */
     #[Route('/{id}', name: 'app_favorites_delete', methods: ['POST'])]
     public function delete(Request $request, Favorites $favorite, FavoritesRepository $favoritesRepository): Response
